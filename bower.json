@@ -1,0 +1,20 @@
+{
+  "name": "vgp",
+  "main": "index.js",
+  "homepage": "https://github.com/SylviaTMN/vgp",
+  "authors": [
+    "SylviaTMN <stn5821@ppsbstudent.org>"
+  ],
+  "description": "video game library",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
