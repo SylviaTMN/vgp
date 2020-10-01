@@ -2,7 +2,26 @@
 
 (function(window, _) {
   window.vgp = window.vgp || {
-    numz: {/* other code */},
+    numz: {/* other code */
+    
+    getAngleDegrees(pointA, pointB) {
+        const
+            distanceX = pointB.x - pointA.x,
+            distanceY = pointB.y - pointA.y,
+            radians = Math.atan2(distanceY, distanceX),
+            degrees = radians * 180 / Math.PI;
+        return degrees;
+    },
+    
+    degreesToRadians(degrees) {
+        return degrees * Math.PI / 180;
+    },
+    radiansTodegrees(radians) {
+        return radians * 180 / Math.PI;
+    },
+    
+
+    },
     phyz: {
       /**
        * Returns an Object with basic properties utilized in a 
@@ -43,7 +62,14 @@
           integrity: integrity,
           density: density,
           volatility: volatility,
-
+        
+    getDistance(pointA, pointB) {
+        const
+        distanceX = pointB.x - pointA.x,
+        distanceY = pointB.y - pointA.y,
+        distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        return distance;
+    },
           /**
            * @param {Number} A number representing the force of the impact.
            * @param {Object} The other body involved in the collision.

@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "lodash": "^4.17.20",
-    "vgp": "http://github.com/SylviaTMN/vgp.git"
+    "vgp": "https://github.com/SylviaTMN/vgp.git#v0.1.0"
   }
 }
