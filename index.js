@@ -64,13 +64,6 @@
           density: density,
           volatility: volatility,
         
-    getDistance(pointA, pointB) {
-        const
-        distanceX = pointB.x - pointA.x,
-        distanceY = pointB.y - pointA.y,
-        distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        return distance;
-    },
           /**
            * @param {Number} A number representing the force of the impact.
            * @param {Object} The other body involved in the collision.
@@ -79,45 +72,6 @@
             // template method //
           },
 
-    /**
-     * Updates the diagonal velocity properties of a body,
-     * taking into account the body's current velocity 
-     * and applying any forces acting against the body
-     * as acceleration on both the x and y axis.
-     * 
-     * NOTE: This method DOES NOT update the position of 
-     * the body, it only updates its velocity.
-     * 
-     * @param {Object} body: The body must be an Object 
-     * with velocityX, velocityY and rotation properties. 
-     * @param {Number} forceOnX: The force acting against
-     * the body on the x axis.
-     * @param {Number} forceOnY: The force acting against
-     * the body on the y axis.
-     */
-    updateVelocity(body, forceOnX, forceOnY) {
-    const
-        angle = body.rotation * Math.PI / 180,
-        accelerationOnX  = Math.cos(angle) * forceOnX,
-        accelerationOnY = Math.sin(angle) * forceOnY;
-    body.velocityX += accelerationOnX;
-    body.velocityY += accelerationOnY;
-    },
-
-    /**
-     * Updates the x and y properties of a body based on its
-     * velocityX and velocityY, and, updates the rotation of
-     * a body based on its rotationalVelocity.
-     *
-     * @param {Object} body: The body must be an Object 
-     * with x, y, rotation, velocityX, velocityY, and 
-     * rotationalVelocity properties.
-     */
-    updatePosition(body) {
-    body.x += body.velocityX;
-    body.y += body.velocityY;
-    body.rotation += body.rotationalVelocity;
-    },
           /**
            * Can be overridden in the concrete body to provide a custom update()
            * method.
@@ -127,6 +81,54 @@
           }
         };
       },
+
+      getDistance(pointA, pointB) {
+        const
+        distanceX = pointB.x - pointA.x,
+        distanceY = pointB.y - pointA.y,
+        distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        return distance;
+        },
+
+        /**
+         * Updates the diagonal velocity properties of a body,
+         * taking into account the body's current velocity 
+         * and applying any forces acting against the body
+         * as acceleration on both the x and y axis.
+         * 
+         * NOTE: This method DOES NOT update the position of 
+         * the body, it only updates its velocity.
+         * 
+         * @param {Object} body: The body must be an Object 
+         * with velocityX, velocityY and rotation properties. 
+         * @param {Number} forceOnX: The force acting against
+         * the body on the x axis.
+         * @param {Number} forceOnY: The force acting against
+         * the body on the y axis.
+         */
+        updateVelocity(body, forceOnX, forceOnY) {
+        const
+            angle = body.rotation * Math.PI / 180,
+            accelerationOnX  = Math.cos(angle) * forceOnX,
+            accelerationOnY = Math.sin(angle) * forceOnY;
+        body.velocityX += accelerationOnX;
+        body.velocityY += accelerationOnY;
+        },
+
+        /**
+         * Updates the x and y properties of a body based on its
+         * velocityX and velocityY, and, updates the rotation of
+         * a body based on its rotationalVelocity.
+         *
+         * @param {Object} body: The body must be an Object 
+         * with x, y, rotation, velocityX, velocityY, and 
+         * rotationalVelocity properties.
+         */
+        updatePosition(body) {
+        body.x += body.velocityX;
+        body.y += body.velocityY;
+        body.rotation += body.rotationalVelocity;
+        }
     },
   };
 }(window, window._));
